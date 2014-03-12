@@ -366,10 +366,12 @@ for area in areas:
             #print "The lovely area: %s with url http://bleau.info/%s/7a++.html and about %s boulders 7a or harder" % (subarea[1], subarea[0], subarea[2])
 
             url = "http://bleau.info/%s/7a++.html" % subarea[0]
+            
+            subarea = subarea[1].decode('utf-8')
 
             area_data = {
                 "id" : area_id,
-                "name" : subarea[1]
+                "name" : subarea
             }
             scraperwiki.sqlite.save(unique_keys=['id'], data=area_data, table_name="areas")
 
@@ -377,4 +379,3 @@ for area in areas:
             save_area_boulders(area_id, url)
             
             area_id += 1
-
